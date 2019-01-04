@@ -16,6 +16,6 @@ function LuaDoItLua()
 end
 
 print "nvim-example-lua-plugin.vim: Lua code executing."
-require("lua.luamodule.init").showstuff()
+require("luamodule.init").showstuff()
 
 EOF
