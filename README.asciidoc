@@ -21,62 +21,48 @@ The intention of this repository is to make it quick and easy to start a new
 plugin. It is just enough to show how to make the basics work.
 
 ```sh
-git clone --depth 1 https://github.com/jacobsimpson/nvim-example-lua-plugin ~/.vim/bundle/nvim-example-lua-plugin
-rm -Rf ~/.vim/bundle/nvim-example-lua-plugin/.git
+git clone --depth 1 \
+    https://github.com/jacobsimpson/nvim-example-lua-plugin \
+    ~/nvim-example-lua-plugin
+rm -Rf ~/nvim-example-lua-plugin/.git
 ```
 
-=== Configuring Neovim to Use the Plugin
+After that, to load Neovim with the development version of your plugin, execute
+a command to modify the `runtimepath` on startup:
 
-==== Using NeoBundle
-
-```vimscript
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-    " Let NeoBundle manage NeoBundle
-    " Required:
-    NeoBundleFetch 'Shougo/neobundle.vim'
-
-    " You probably have a number of other plugins listed here.
-
-    " Add this line to make your new plugin load, assuming you haven't renamed it.
-    NeoBundle 'nvim-example-lua-plugin'
-call neobundle#end()
+```sh
+nvim --cmd "set rtp+=$HOME/nvim-example-lua-plugin"
 ```
-
-==== Using vim-plug
-
-If you use vim-plug, you can add this line to your plugin section:
-
-```vimscript
-Plug 'jacobsimpson/nvim-example-lua-plugin'
-```
-
-After running `:PlugInstall`, the files should appear in your
-`~/.config/nvim/plugged` directory (or whatever path you have configured for
-plugins).
 
 === Testing the New Plugin
 
-There is some VimL in the plugin that will print when Neovim is starting up:
+There are some messages that should be printed to the console as Neovim is
+starting up, to confirm that the different parts of the plugin are executing
+correctly:
 
-```
-Starting the example Lua Plugin
-```
+1.  Confirm that the VimL portions of the plugin are loading correctly.
 
-That will confirm that the VimL portions of the plugin are loading correctly.
+    nvim-example-lua-plugin.vim: VimL code executing.
+
+1.  Confirm the Lua block in the VimL file is executing.
+
+    nvim-example-lua-plugin.vim: Lua code executing.
+
+1.  Confirm the code from the Lua module is executing.
+
+    nvim-example-lua-plugin.luamodule.showstuff: hello
 
 There is a function defined in the VimL portion of the plugin which echos some
 text. You can execute the function like this:
 
-```vimscript
+```viml
 :exec LuaDoItVimL()
 ```
 
 There is a function defined in the same VimL file, in a Lua block. You can
 execute the function like this:
 
-```vimscript
+```viml
 :luado LuaDoItLua()
 ```
 
@@ -84,9 +70,10 @@ execute the function like this:
 
 === Debugging
 
-To test changes quickly, I usually reload the current file into the embedded Lua interpreter after changes:
+To test changes quickly, I usually reload the current file into the embedded
+Lua interpreter after changes:
 
-```vimscript
+```viml
 :luafile %
 ```
 
@@ -94,13 +81,14 @@ To test changes quickly, I usually reload the current file into the embedded Lua
 
 See the Lua version you have available:
 
-```vimscript
+```viml
 :lua print(_VERSION)
 ```
 
-Directly execute an arbitrary Lua function that has been defined in the Lua interpreter embedded in Neovim.
+Directly execute an arbitrary Lua function that has been defined in the Lua
+interpreter embedded in Neovim.
 
-```vimscript
+```viml
 :lua doit()
 ```
 
@@ -118,18 +106,20 @@ To define an arbitrary function in the Lua interpreter embedded in Neovim:
 -   Yank
 -   `:luado ^r"<CR>`
 
+```lua
 function execute_lua_block()
     print("this is the thing.")
 end
+```
 
 To map an arbitrary Lua function to a Neovim keybinding:
 
-```vimscript
+```viml
 nmap <C-l-e> :lua execute_lua_block()<CR>
 ```
 
 To see information about the Neovim API available in Lua:
 
-```vimscript
+```viml
 :help api.txt
 ```
