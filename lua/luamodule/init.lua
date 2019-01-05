@@ -1,7 +1,3 @@
-local luamodule = {}
-
-luamodule.showstuff = function ()
-    print "nvim-example-lua-plugin.luamodule.showstuff: hello"
+function GlobalLuaFunction()
+    print "nvim-example-lua-plugin.luamodule.init GlobalLuaFunction: hello"
 end
-
-return luamodule
