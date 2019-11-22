@@ -12,7 +12,7 @@ git clone --depth 1 \
     https://github.com/jacobsimpson/nvim-example-lua-plugin \
     "$dst"
 rm -Rf "$dst/.git" "$dst/install.sh" "$dst/README.asciidoc"
-mv "README-example.md" "README.md"
+mv "$dst/README-example.md" "$dst/README.md"
 
 if [[ ! -z $name ]]; then
     mv "$dst/plugin/nvim-example-lua-plugin.vim" "$dst/plugin/$name.vim"
