@@ -6,19 +6,18 @@ Newer versions of Neovim include an embedded lua interpreter, making it
 possible to write non-remote plugins using Lua instead of Vimscript.
 
 This is a minimal example of an embedded Lua plugin. When you want to create a
-new Lua plugin, you should be able to (and feel free to):
+new Lua plugin, you should be able start from a working plugin by running:
 
--   copy this repository
--   rename a couple files
--   include the plugin in your Vim config
--   see something happen
+```sh
+bash <( curl -o- https://raw.githubusercontent.com/jacobsimpson/nvim-example-lua-plugin/master/install.sh) mynewplugin
+```
 
-== Installing
+and following the instructions on the screen.
 
-=== Downloading
+== Installing Manually
 
 The intention of this repository is to make it quick and easy to start a new
-plugin. It is just enough to show how to make the basics work.
+plugin. If you don't want to run the included bash script, it is also possible to do the steps manually.
 
 ```sh
 git clone --depth 1 \
@@ -31,7 +30,7 @@ After that, to load Neovim with the development version of your plugin, execute
 a command to modify the `runtimepath` on startup:
 
 ```sh
-nvim --cmd "set rtp+=$HOME/nvim-example-lua-plugin"
+nvim --cmd "set rtp+=./nvim-example-lua-plugin"
 ```
 
 === Testing the New Plugin
