@@ -9,7 +9,9 @@ This is a minimal example of an embedded Lua plugin. When you want to create a
 new Lua plugin, you should be able start from a working plugin by running:
 
 ```sh
-bash <( curl -o- https://raw.githubusercontent.com/jacobsimpson/nvim-example-lua-plugin/master/install.sh) mynewplugin
+bash \
+  <(curl -o- https://raw.githubusercontent.com/jacobsimpson/nvim-example-lua-plugin/master/install.sh) \
+  mynewplugin
 ```
 
 and following the instructions on the screen.
