@@ -64,7 +64,7 @@ There is a function defined in the same VimL file, in a Lua block. You can
 execute the function like this:
 
 ```viml
-:luado LuaDoItLua()
+:luado lua_do_it_lua()
 ```
 
 == Plugin Development
