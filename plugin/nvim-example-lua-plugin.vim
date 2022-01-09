@@ -29,6 +29,12 @@ EOF
 " will find the `lua\myluamodule\init.lua` file.
 lua myluamodule = require("myluamodule")
 
+" Common convention in the Neovim plugin community is to require the module
+" and use it all at once:
+require'myluamodule'.setup({p1 = "value1"})
+
+
+
 " Once the `require` statement completes, the `global_lua_function` Lua
 " function defined in `lua\myluamodule\init.lua` will be available without
 " qualification.
@@ -52,6 +58,11 @@ nmap <M-C-G> :lua global_lua_function()<CR>
 " the module when qualified with the module name.  (See the `require`
 " statement above.)
 nmap <M-C-L> :lua myluamodule.local_lua_function()<CR>
+
+" A key mapping can be configured that uses the require statement directly,
+" so a module doesn't need to be defined in the local scope.
+nmap <M-C-L> :lua require'myluamodule'.local_lua_function()<CR>
+
 
 " Lua code can be defined in other files, rather than just `lua.lua` or
 " `init.lua`. Here, Lua code is defined in `lua\myluamodule\definestuff.lua`.
