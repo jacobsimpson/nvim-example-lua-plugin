@@ -31,7 +31,7 @@ lua myluamodule = require("myluamodule")
 
 " Common convention in the Neovim plugin community is to require the module
 " and use it all at once:
-require'myluamodule'.setup({p1 = "value1"})
+lua require'myluamodule'.setup({p1 = "value1"})
 
 
 
