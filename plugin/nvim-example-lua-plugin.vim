@@ -50,6 +50,13 @@ lua myluamodule.local_lua_function()
 " file. Since this function was exported globally, that symbol is available
 " everywhere, once the module has been loaded. (See the `require` statement
 " above.)
+"
+" NOTE: There is now (starting with Neovim 7) a pure Lua option to replace this key mapping.
+"
+" vim.keymap.set('n', 'M-C-G', function()
+"   print('Hello')
+" end, {desc = 'Say hello key mapping.', remap = false})
+"
 nmap <M-C-G> :lua global_lua_function()<CR>
 
 " A local Lua function can be mapped to a key, if it was exported from the
@@ -57,10 +64,24 @@ nmap <M-C-G> :lua global_lua_function()<CR>
 " function that was qualified with `local`, so it is only available outside
 " the module when qualified with the module name.  (See the `require`
 " statement above.)
+"
+" NOTE: There is now (starting with Neovim 7) a pure Lua option to replace this key mapping.
+"
+" vim.keymap.set('n', 'M-C-G', function()
+"   print('Hello')
+" end, {desc = 'Say hello key mapping.', remap = false})
+"
 nmap <M-C-L> :lua myluamodule.local_lua_function()<CR>
 
 " A key mapping can be configured that uses the require statement directly,
 " so a module doesn't need to be defined in the local scope.
+"
+" NOTE: There is now (starting with Neovim 7) a pure Lua option to replace this key mapping.
+"
+" vim.keymap.set('n', 'M-C-G', function()
+"   print('Hello')
+" end, {desc = 'Say hello key mapping.', remap = false})
+"
 nmap <M-C-L> :lua require'myluamodule'.local_lua_function()<CR>
 
 
