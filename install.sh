@@ -29,7 +29,12 @@ nvim --cmd 'set rtp+=$dst'
 To use it after uploading to Github, add the necessary plugin load command to
 your Neovim config files.
 
-Example:
+Example - using Packer plugin manager, with the plugin installed locally:
+
+use '$dst'
+
+Example - using vim-plug plugin manager, after the new plugin has been uploaded to Github:
 
 Plug '<github-username>/${name}'
+
 "
